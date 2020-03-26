@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function run() {
+  local path_video=$(potato_get_arg 1)
+  local path_audio=${path_video/mp4/mp3}
+  safe ffmpeg -i $path_video -ar 44100 -ab 128 -f mp3 $path_audio
+}
