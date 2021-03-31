@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+function run() {
+  lynx -dump -listonly $1 | grep -v Hidden | cut -d' ' -f3- 
+}
