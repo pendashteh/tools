@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
 function run() {
-  potato_app_get_tasks tools
+  echo '
+Usage:
+$ tools tool_name
+
+Available tools:
+  '
+  potato_tasks_list tools
 }
