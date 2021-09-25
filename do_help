@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 function run() {
-  echo '
+  cat <<EOF
 Usage:
-$ tools tool_name
+ $ tools tool_name
 
 Available tools:
-  '
-  potato_tasks_list tools
+EOF
+  printf ' - %s\n' $(potato_tasks_list tools)
 }
