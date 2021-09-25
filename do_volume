@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+function run() {
+  local vol=$1 # in percentage, absolute or relative. e.g. 50 (for 50%), 0 (for mute), -10 (for 10% lower)
+  pactl set-sink-volume @DEFAULT_SINK@ "${vol}%"
+}
