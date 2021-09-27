@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+function run {
+  pacmd list-sink-inputs | grep 'application.'
+}
+
+function run__help {
+  echo 'Lists all apps using the sound devices'
+}
