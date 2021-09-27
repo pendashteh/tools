@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
 function run() {
+  if [ ! -z $1 ]; then
+    potato_load_task $1 || return
+    run__help 2>/dev/null || echo '[DEBUG] run__help is not implemented for '$1
+    return
+  fi
   cat <<EOF
 Usage:
  $ tools tool_name
 
 Available tools:
 EOF
-  printf ' - %s\n' $(potato_tasks_list tools)
+  printf ' - %s\n' $(potato_tasks_list)
 }
