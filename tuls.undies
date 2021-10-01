@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+__puton__ ()
+{
+  : make __exec silent
+  __confirm__=
+}
+
+ip__help="$ __app__ ip ;: displays machine's ip."
+ip__ ()
+{
+  hostname -I | awk '{print $1}'
+}
+
+port__help="$ __app__ port [port] ;: displays processes using the port."
+port__ ()
+{
+  local port=$1
+  test ! -z $port || read -p 'port? ' port
+  sudo lsof -i -P -n 2>/dev/null | grep "\:${port}[[:space:]]"
+}
+
+. undies
