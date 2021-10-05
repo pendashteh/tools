@@ -17,7 +17,7 @@ port__ ()
 {
   local port=$1
   test ! -z $port || read -p 'port? ' port
-  sudo lsof -i -P -n 2>/dev/null | grep "\:${port}[[:space:]]"
+  sudo lsof -i -P -n 2>/dev/null | grep "\:${port}[[:space:]]" | cat
 }
 
 . undies
