@@ -20,4 +20,11 @@ port__ ()
   sudo lsof -i -P -n 2>/dev/null | grep "\:${port}[[:space:]]" | cat
 }
 
+network__help=': the name of network adapter'
+network__ ()
+{
+  : 'https://serverfault.com/a/842982/34784'
+  ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//"
+}
+
 . undies
