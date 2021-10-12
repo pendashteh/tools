@@ -11,8 +11,24 @@ function run() {
     gotty --port $port tmux attach -t $session_name || gotty --port $port tmux new -s $session_name
   }
 
-  attach__help='Attach to a given session name. (default to base)'
-  attach__() {
+  attach__help='Attaches to a provided socket and session.'
+  attach__ () {
+    read -p 'socket? [default] ' socket
+    socket=${socket:-'default'}
+    echo 'Available sessions:'
+    tmux -L $socket ls 2>/dev/null || echo '(none)'
+    read -p 'session? [base] ' session
+    session=${session:-'base'}
+    if tmux -L $socket has-session -t $session
+    then
+      __exec tmux -L $socket attach -t $session
+    else
+      __exec tmux -L $socket new -s $session
+    fi
+  }
+
+  at__help='Attach to a given session name. (default to base)'
+  at__() {
     local session_name=${1:-'base'}
     tmux attach -t $session_name || tmux new -s $session_name
   }
