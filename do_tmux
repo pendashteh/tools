@@ -11,6 +11,11 @@ function run() {
     gotty --port $port tmux attach -t $session_name || gotty --port $port tmux new -s $session_name
   }
 
+  sockets__help='@does list active sockets (servers)'
+  sockets__ () {
+    lsof -U 2>/dev/null | grep ^tmux | sed -r 's/^.*\s(.+\/[^\s\/]+)\s.*$|./\1/g; '/^\s*$/d''
+  }
+
   attach__help='Attaches to a provided socket and session.'
   attach__ () {
     read -p 'socket? [default] ' socket
