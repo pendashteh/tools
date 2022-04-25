@@ -6,6 +6,11 @@ __puton__ ()
   __confirm__=
 }
 
+dns__ () {
+  local domain=$1
+  dig +noall +answer +multiline $domain any
+}
+
 ip__help="$ __app__ ip ;: displays machine's ip."
 ip__ ()
 {
