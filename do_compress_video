@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+function run() {
+  local path_input=$1
+  local path_output=${path_input/'.mp4'/'-compressed.mp4'}
+  : 'https://unix.stackexchange.com/a/38380'
+  safe ffmpeg -i $path_input -vcodec libx265 -crf 28 $path_output
+}
